@@ -1,5 +1,8 @@
 import tkinter
 import pygame
+naat = ["Naat.mp3","Naat1.mp3","Naat2.mp3"]
+i = 0
+loop = False
 
 def center_screen(window, height, width):
     wheight = window.winfo_screenheight()
@@ -37,9 +40,33 @@ def prevclicked():
         pygame.mixer.music.load(naat[i])
     pygame.mixer.music.play()
 
+def nextclicked():
+    global i
+    if i == 2:
+        i=0
+        pygame.mixer.music.load(naat[i])
+    else:
+        i = i+1
+        pygame.mixer.music.load(naat[i])
+    pygame.mixer.music.play()
+
+def loopbutton():
+    if (loop_on.cget('text')=="loop"):
+        loop_on.config(text="no loop")
+        pygame.mixer.music.play(loops=-1)
+    elif (loop_on.cget('text')=="no loop"):
+        pygame.mixer.music.play()
+        loop_on.config(text="loop")
+    pass
+
 def buttons():
     play_button.pack(side=tkinter.LEFT, anchor=tkinter.SW)
     previous_button.pack(side = tkinter.LEFT, anchor = tkinter.SW)
+    loop_on.pack(side=tkinter.LEFT, anchor=tkinter.SW)
+    next_button.pack(side=tkinter.LEFT, anchor=tkinter.SW)
+    image_label.place(relx=0.5, rely=0.5, anchor="center")
+
+
 
 window = tkinter.Tk()
 window.title("Naat Player")   #title name
@@ -59,6 +86,7 @@ window.after(3000, removewelcome)
 window.after(3000,buttons)
 play_button = tkinter.Button(window, text="Play", command=playclicked, width=10, height=2)
 previous_button = tkinter.Button(window, text = "Prev", command=prevclicked, width=10, height=2)
-
+loop_on=tkinter.Button(window, text="loop", command=loopbutton, width=10,height=2)
+next_button = tkinter.Button(window, text = "Next", command=nextclicked, width=10,height=2)
 
 window.mainloop()
