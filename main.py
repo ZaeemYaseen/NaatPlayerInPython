@@ -1,4 +1,5 @@
 import tkinter
+import pygame
 
 def center_screen(window, height, width):
     wheight = window.winfo_screenheight()
@@ -14,6 +15,31 @@ def removewelcome():
     var_label1 = tkinter.Label(window, text=var1, font=("Arial", 16))
     var_label1.pack(pady=50)
 
+def playclicked():
+
+    if (play_button.cget('text')=="Play"):
+        pygame.mixer.init()
+        pygame.mixer.music.load(naat[i])
+        pygame.mixer.music.play()
+        play_button.config(text="Pause")
+    else:
+        pygame.mixer.music.pause()
+        play_button.config(text = "Play")
+    pass
+
+def prevclicked():
+    global i
+    if i == 0:
+        i = 2
+        pygame.mixer.music.load(naat[i])
+    else:
+        i = i-1
+        pygame.mixer.music.load(naat[i])
+    pygame.mixer.music.play()
+
+def buttons():
+    play_button.pack(side=tkinter.LEFT, anchor=tkinter.SW)
+    previous_button.pack(side = tkinter.LEFT, anchor = tkinter.SW)
 
 window = tkinter.Tk()
 window.title("Naat Player")   #title name
@@ -30,3 +56,9 @@ image_label = tkinter.Label(window, image=image)
 
 
 window.after(3000, removewelcome)
+window.after(3000,buttons)
+play_button = tkinter.Button(window, text="Play", command=playclicked, width=10, height=2)
+previous_button = tkinter.Button(window, text = "Prev", command=prevclicked, width=10, height=2)
+
+
+window.mainloop()

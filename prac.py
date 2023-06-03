@@ -2,7 +2,6 @@ import tkinter
 import pygame
 naat = ["Naat.mp3","Naat1.mp3","Naat2.mp3"]
 i = 0
-pause = 0
 loop = False
 
 def center_screen(window, height, width):
