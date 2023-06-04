@@ -6,4 +6,5 @@ With functions such as play, pause, next, previous, and loop, users can easily n
 control playback, switch between tracks, and enjoy uninterrupted listening to their preferred Naat on a continuous loop.
 
 ![Output](https://github.com/ZaeemYaseen/NaatPlayerInPython/blob/master/output.png?raw=true)
-![output Video](https://github.com/ZaeemYaseen/NaatPlayerInPython/blob/master/video.mp4)
+[![video](output video)](https://github.com/ZaeemYaseen/NaatPlayerInPython/blob/master/video.mp4)
+
